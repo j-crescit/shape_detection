@@ -1,13 +1,10 @@
 import numpy as np
 import cv2
 
-frame_width = 400
-frame_height = 300
-
 cap = cv2.VideoCapture(1)
 
-cap.set(3, frame_width)
-cap.set(4, frame_height)
+cap.set(3, 400)
+cap.set(4, 300)
 
 def empty(a):
     pass
@@ -71,16 +68,29 @@ def getContours(img, imgContours):
 
     contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-    for cnt in contours:
-        area = cv2.contourArea(cnt)
+    for i in contours:
+        area = cv2.contourArea(i)
         area_min = cv2.getTrackbarPos("Area", "Parameters")
 
+        M = cv2.moments(i, False)
+
+        if M['m00'] != 0:
+            cX = int(M['m10'] / M['m00'])
+            cY = int(M['m01'] / M['m00'])
+        else:
+            cX = 0
+            cY = 0
+
+        cv2.circle(img_contour, (cX, cY), 3, (255, 0, 0), -1)
+        cv2.drawContours(img_contour, [i], 0, (0, 255, 255), 2)
+
         if area > area_min:
-            cv2.drawContours(img_contour, cnt, -1, (255, 0, 255), 7)
-            peri = cv2.arcLength(cnt, True)
-            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+            cv2.drawContours(img_contour, i, -1, (255, 0, 255), 7)
+            peri = cv2.arcLength(i, True)
+            approx = cv2.approxPolyDP(i, 0.02 * peri, True)
             print(len(approx))
             x, y, w, h = cv2.boundingRect(approx)
+
             cv2.rectangle(img_contour, (x, y), (x+w, y+h), (0, 255, 0), 5)
 
             cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
