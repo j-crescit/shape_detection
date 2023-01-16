@@ -81,7 +81,7 @@ def getContours(img, imgContours):
             cX = 0
             cY = 0
 
-        cv2.circle(img_contour, (cX, cY), 3, (255, 0, 0), -1)
+        cv2.circle(img_contour, (cX, cY), 4, (255, 0, 0), -1)
         cv2.drawContours(img_contour, [i], 0, (0, 255, 255), 2)
 
         if area > area_min:
@@ -95,6 +95,7 @@ def getContours(img, imgContours):
 
             cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
             cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 20, y + 45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
+            cv2.putText(img_contour, 'Mass Center  : ' + str((cX, cY)), (x + w + 20, y + h + 70), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
 
 
 while True:
