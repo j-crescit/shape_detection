@@ -3,8 +3,8 @@ import cv2
 
 cap = cv2.VideoCapture(1)
 
-cap.set(3, 400)
-cap.set(4, 300)
+cap.set(3, 450)
+cap.set(4, 350)
 
 def empty(a):
     pass
@@ -93,9 +93,9 @@ def getContours(img, imgContours):
 
             cv2.rectangle(img_contour, (x, y), (x+w, y+h), (0, 255, 0), 5)
 
-            cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
-            cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 20, y + 45), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
-            cv2.putText(img_contour, 'Mass Center  : ' + str((cX, cY)), (x + w + 20, y + h + 70), cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
+            cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
+            cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 20, y + 45), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
+            cv2.putText(img_contour, 'Mass Center  : ' + str(int(cX)) + ' ,' + str(int(cY)), (x + w + 20, y + 70), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
 
 
 while True:
