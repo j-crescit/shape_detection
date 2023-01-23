@@ -35,11 +35,11 @@ def getContours(img, imgContours):
             approx = cv2.approxPolyDP(i, 0.02 * peri, True)
             x, y, w, h = cv2.boundingRect(approx)
 
-            cv2.rectangle(img_contour, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.rectangle(img_contour, (x, y), (x+w, y+h), (100, 150, 150), 2)
 
-            cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 20, y + 20), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
-            cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 20, y + 45), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
-            cv2.putText(img_contour, 'Mass Center  : ' + '(' + str(int(cX)) + ' , ' + str(int(cY))  + ')', (x + w + 20, y + 70), cv2.FONT_HERSHEY_COMPLEX, 0.5, (212, 175, 55), 1)
+            cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 10, y + 10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
+            cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 10, y + 35), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
+            cv2.putText(img_contour, 'Mass Center  : ' + '(' + str(int(cX)) + ' , ' + str(int(cY))  + ')', (x + w + 10, y + 60), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
 
 img_contour = image.copy()
 
