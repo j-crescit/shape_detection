@@ -37,7 +37,8 @@ Initializing a new image and drawing the filtered contours
 <br>
 
 ## Sample output:
-![Alt text](image/shape_save.png)
+![shape_save](https://user-images.githubusercontent.com/122704973/214612383-ae08b73b-0bd1-4e4e-aacd-6ecfea8e999f.png)
+
 <br>
 <br>
 <br>
