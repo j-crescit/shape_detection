@@ -1,32 +1,4 @@
 # Shape Detection
-간략한 소개
-
-## 프로젝트 소개
-이거 대박임
-
-## code
-
-The code does the following in sequence:
-
-Reading the image and converting from RGB to GrayScale
-
-Removing Gaussian Noise vis Gaussian Blur
-
-Appling Inverse Binary Thresholding Finding Invrese Binary Adaptive Thresholding
-
-Finding all Countours in the processed image
-
-Filtering countours bases on their area
-
-Initializing a new image and drawing the filtered contours
-
-## 제한 사항
-이거 제한있음 뭐 삼각형 사각형 원 이런거??
-
-## 개발 환경
-python opencv
-
-## 주요 기능
 
 <br>
 
@@ -92,4 +64,3 @@ While various methods are being introduced to acquire energy from nature, we app
 ## 3. Measure Amplitude
 
 Previously, the vibration system of the energy harvester was analyzed by measuring the amplitude with a laser sensor, but it is insufficient when it is accompanied by a deformation process of the bluff body. Therefore, we recognized the appearance of the harvester with a camera, found the center of gravity, and coordinated it to enable visual analysis of the harvester.
-
