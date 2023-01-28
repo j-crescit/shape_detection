@@ -51,18 +51,19 @@ Initializing a new image and drawing the filtered contours
 
 <br>
 
-## 1. Energy Harvesting
+## 1. Wind Flow Energy Harvesting
 
-The depletion of fossil fuels and the increase in energy consumption have become a global environmental problem. Accordingly, many studies are being conducted with interest in converting natural energy such as solar energy, thermal energy, wind energy, etc. into electrical energy based on a lot of interest in alternative energy development. The availability of low-cost renewable and scalable energy harvesting systems may enable electronic equipment to operate autonomously in the long run, with the aim of developing devices that utilize energy from the environment to eliminate the drawbacks of conventional small batteries and enhance performance.
-
-<br>
-
-## 2. Wind Energy Harvesting
-
-While various methods are being introduced to acquire energy from nature, we approached them by harvesting electrical energy based on vibration energy. Vibration-based energy harvesting has the advantage of being compact by harvesting electrical energy with mechanical movements from external influences. It can also be applied at low wind speeds and has the advantage of being able to build a wireless network.
+* Vibration energy generated wind flow is
+* Various aerodynamically phenomena occur depending on the cross-sectional shape of the bluff body, which has a great influence on energy harvesting efficiency.
 
 <br>
 
-## 3. Measure Amplitude
+## 2. Measure Amplitude
 
-Previously, the vibration system of the energy harvester was analyzed by measuring the amplitude with a laser sensor, but it is insufficient when it is accompanied by a deformation process of the bluff body. Therefore, we recognized the appearance of the harvester with a camera, found the center of gravity, and coordinated it to enable visual analysis of the harvester.
+* The vibration system of the bluff body is analyzed to understand the aerodynamic phenomenon.
+
+* Representatively, there is a method of measuring and analyzing the amplitude of a vibrating blur body with a laser sensor.
+
+* However, other movements of the bluff body (slice, self-strain, etc.) cannot be analyzed.
+
+* It is possible to visually analyze the appearance of the harvester while grasping the vibration system through the camera.
