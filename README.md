@@ -13,19 +13,11 @@
 
 ## code
 
-The code does the following in sequence:
+The code is performed in the following sequence:
 
-Reading the image and converting from RGB to GrayScale
+1. Import video file and convert the from RGB to GrayScale.
 
-Removing Gaussian Noise vis Gaussian Blur
-
-Appling Inverse Binary Thresholding Finding Invrese Binary Adaptive Thresholding
-
-Finding all Countours in the processed image
-
-Filtering countours bases on their area
-
-Initializing a new image and drawing the filtered contours
+2. Noise removal from video is eliminated with Gaussian Blur.
 
 <br>
 
@@ -38,7 +30,7 @@ Initializing a new image and drawing the filtered contours
 
 ## Sample output:
 
-<img src = "image/shape_save.png" width="300%" height="300%"/>
+<img src = "image/output.png" width="300%" height="300%"/>
 
 <br>
 <br>
@@ -67,3 +59,11 @@ Initializing a new image and drawing the filtered contours
 * However, other movements of the bluff body (slice, self-strain, etc.) cannot be analyzed.
 
 * It is possible to visually analyze the appearance of the harvester while grasping the vibration system through the camera.
+
+* Sample output:
+
+    original version
+    ![Alt text](video/original.gif)
+
+    version with code
+    ![Alt text](video/output.gif)
