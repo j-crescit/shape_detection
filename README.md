@@ -39,6 +39,14 @@ The code is performed in the following sequence:
 <br>
 <br>
 
+---
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # Apply in **Energy Harvesting**
 
 <br>
@@ -61,9 +69,13 @@ The code is performed in the following sequence:
 * It is possible to visually analyze the appearance of the harvester while grasping the vibration system through the camera.
 
 * Sample output:
+    
+    - This is a scene taken with a camera during an experiment in a real wind tunnel.
+    - Connect the cantilever beam to the fixed jig inside the wind tunnel and attach the bluff body to the end.
+    - The direction of the wind proceeds from right to left, and the bluff body vibrates by the wind and electricity can be extracted with a piezoelectric element attached to the beam.
 
-    original version
+    - original version
     ![Alt text](video/original.gif)
 
-    version with code
+    - version with code
     ![Alt text](video/output.gif)
