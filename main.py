@@ -7,12 +7,59 @@ def empty(a):
     pass
 
 cv2.namedWindow('Parameters')
-cv2.resizeWindow('Parameters', 640, 240)
+cv2.resizeWindow('Parameters', 600, 300)
 cv2.createTrackbar('Threshold_1', 'Parameters', 25, 255, empty)
 cv2.createTrackbar('Threshold_2', 'Parameters', 240, 255, empty)
 cv2.createTrackbar("Area", "Parameters", 1000, 100000, empty)
 
-y_list=[]
+def stack_img(scale, img_array):
+    rows = len(img_array)
+    cols = len(img_array[0])
+
+    rows_available = isinstance(img_array[0], list)
+
+    width = img_array[0][0].shape[1]
+    height = img_array[0][0].shape[0]
+
+    if rows_available:
+        for x in range(0, rows):
+
+            for y in range(0, cols):
+
+                if img_array[x][y].shape[:2] == img_array[0][0].shape[:2]:
+                    img_array[x][y] = cv2.resize(img_array[x][y], (0, 0), None, scale, scale)
+
+                else:
+                    img_array[x][y] = cv2.resize(img_array[x][y], (img_array[0][0].shape[1], img_array[0][0].shape[0]), None, scale, scale)
+
+                if len(img_array[x][y].shape) == 2:
+                    img_array[x][y] = cv2.cvtColor(img_array[x][y], cv2.COLOR_GRAY2BGR)
+
+        img_blank = np.zeros((height, width, 3), np.uint8)
+
+        hor = [img_blank]*rows
+        hor_con = [img_blank]*rows
+
+        for x in range(0, rows):
+            hor[x] = np.hstack(img_array[x])
+
+        ver = np.vstack(hor)
+
+    else:
+        for x in range(0, rows):
+
+            if img_array[x].shape[:2] == img_array[0].shape[:2]:
+                img_array[x] = cv2.resize(img_array[x], (0, 0), None, scale, scale)
+
+            else:
+                img_array[x] = cv2.resize(img_array[x], (img_array[0].shape[1], img_array[0].shape[0]), None, scale, scale)
+
+            if len(img_array[x].shape) == 2:
+                img_array[x] = cv2.cvtColor(img_array[x], cv2.COLOR_GRAY2BGR)
+
+        hor = np.hstack(img_array)
+        ver = hor
+    return ver
 
 def getContours(img, imgContours):
 
@@ -31,6 +78,8 @@ def getContours(img, imgContours):
             cX = 0
             cY = 0
 
+        y_list=[]
+
         y_list.append(abs(360 - cY))
 
         amplitude = round(abs(360-cY)/94.2, 3)
@@ -42,8 +91,8 @@ def getContours(img, imgContours):
         if area > area_min:
             cv2.drawContours(img_contour, i, -1, (255, 0, 255), 7)
 
-            peri = cv2.arcLength(i, True)
-            approx = cv2.approxPolyDP(i, 0.02 * peri, True)
+            arc = cv2.arcLength(i, True)
+            approx = cv2.approxPolyDP(i, 0.02 * arc, True)
 
             x, y, w, h = cv2.boundingRect(approx)
 
@@ -57,19 +106,22 @@ while True:
     success, img = cap.read()
     img_contour = img.copy()
 
-    imgBlur = cv2.GaussianBlur(img, (7, 7), 1)
-    imgGray = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2GRAY)
+    img_blur = cv2.GaussianBlur(img, (7, 7), 1)
+    img_gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
 
     threshold_1 = cv2.getTrackbarPos('Threshold_1', 'Parameters')
     threshold_2 = cv2.getTrackbarPos('Threshold_2', 'Parameters')
 
-    img_Canny = cv2.Canny(imgGray, threshold_1, threshold_2)
+    img_canny = cv2.Canny(img_gray, threshold_1, threshold_2)
     kernel = np.ones((5, 5))
-    img_dil = cv2.dilate(img_Canny, kernel, iterations=1)
+    img_dil = cv2.dilate(img_canny, kernel, iterations = 1)
 
     getContours(img_dil, img_contour)
 
-    cv2.imshow('Result', img_contour)
+    stack = stack_img(0.7, ([img, img_gray, img_canny], [img_dil, img_contour, img_contour]))
+
+
+    cv2.imshow('Result', stack)
 
     if cv2.waitKey(50) & 0xFF == ord('q'):
         break
