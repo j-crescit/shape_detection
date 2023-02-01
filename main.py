@@ -118,8 +118,7 @@ while True:
 
     getContours(img_dil, img_contour)
 
-    stack = stack_img(0.7, ([img, img_gray, img_canny], [img_dil, img_contour, img_contour]))
-
+    stack = stack_img(0.7, ([img, img_blur, img_gray], [img_canny, img_dil, img_contour]))
 
     cv2.imshow('Result', stack)
 
