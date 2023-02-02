@@ -21,7 +21,11 @@ The code is performed in the following sequence:
 
 3. Canny edge detects edge in video file.
 
-4.
+4. Use the Track bar to analyze the thresholds.
+
+5. Inflate the video to remove additional noise.
+
+6. Drawing the contours.
 
 <br>
 
@@ -36,14 +40,6 @@ The code is performed in the following sequence:
 
 <img src = "image/output.png" width="300%" height="300%"/>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
----
 <br>
 <br>
 <br>
