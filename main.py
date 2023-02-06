@@ -3,14 +3,14 @@ import numpy as np
 
 cap = cv2.VideoCapture(1)
 
-def empty(a):
+def empty(pos):
     pass
 
 cv2.namedWindow('Parameters')
 cv2.resizeWindow('Parameters', 600, 300)
-cv2.createTrackbar('Threshold_1', 'Parameters', 25, 255, empty)
-cv2.createTrackbar('Threshold_2', 'Parameters', 240, 255, empty)
-cv2.createTrackbar("Area", "Parameters", 1000, 100000, empty)
+cv2.createTrackbar('Threshold_1', 'Parameters', 0, 255, empty)
+cv2.createTrackbar('Threshold_2', 'Parameters', 0, 255, empty)
+cv2.createTrackbar("Area", "Parameters", 1000, 50000, empty)
 
 def stack_img(scale, img_array):
     rows = len(img_array)
