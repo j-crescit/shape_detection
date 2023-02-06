@@ -43,12 +43,12 @@ def getContours(img, imgContours):
 
 img_contour = image.copy()
 
-imgBlur = cv2.GaussianBlur(image, (7, 7), 1)
-imgGray = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2GRAY)
+img_blur = cv2.GaussianBlur(image, (7, 7), 1)
+img_gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
 
-img_Canny = cv2.Canny(imgGray, 25, 240)
+img_canny = cv2.Canny(img_gray, 25, 240)
 kernel = np.ones((5, 5))
-img_dil = cv2.dilate(img_Canny, kernel, iterations=1)
+img_dil = cv2.dilate(img_canny, kernel, iterations = 1)
 
 getContours(img_dil, img_contour)
 
