@@ -62,7 +62,7 @@ The code is performed in the following sequence:
 
 * The vibration system of the bluff body is analyzed to understand the aerodynamic phenomenon.
 
-* Representatively, there is a method of measuring and analyzing the amplitude of a vibrating blur body with a laser sensor.
+* Representatively, there is a method of measuring and analyzing the amplitude of a bluff body with a laser sensor.
 
 * However, other movements of the bluff body (slice, self-strain, etc.) cannot be analyzed.
 
