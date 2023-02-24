@@ -69,6 +69,7 @@ def getContours(img, imgContours):
         area = cv2.contourArea(i)
         area_min = cv2.getTrackbarPos("Area", "Parameters")
 
+        # Amplitude of shape(using the cennter of mass)
         M = cv2.moments(i, False)
 
         if M['m00'] != 0:
