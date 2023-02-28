@@ -10,7 +10,7 @@ cv2.namedWindow('Parameters')
 cv2.resizeWindow('Parameters', 600, 300)
 cv2.createTrackbar('Threshold_1', 'Parameters', 0, 255, empty)
 cv2.createTrackbar('Threshold_2', 'Parameters', 0, 255, empty)
-cv2.createTrackbar("Area", "Parameters", 1000, 5000, empty)
+cv2.createTrackbar("Area", "Parameters", 1000, 10000, empty)
 
 def stack_img(scale, img_array):
     rows = len(img_array)
