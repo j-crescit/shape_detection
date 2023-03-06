@@ -5,7 +5,7 @@ img = cv2.imread('image/shape.png')
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
+blur = cv2.GaussianBlur(gray, (5, 5), 0)
 
 circles = cv2.HoughCircles(blur, cv2.HOUGH_GRADIENT, 1.2, 30, None, 200)
 
