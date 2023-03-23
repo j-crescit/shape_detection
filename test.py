@@ -7,7 +7,18 @@ import cv2
 
 image = cv2.imread('image/shape.png')
 
+img_contour = image.copy()
+
+img_blur = cv2.GaussianBlur(image, (7, 7), 1)
+img_gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
+
+img_canny = cv2.Canny(img_gray, 25, 240)
+kernel = np.ones((5, 5))
+img_dil = cv2.dilate(img_canny, kernel, iterations = 1)
+
 image_rst = cv2.resize(image, dsize = (0, 0), fx = 0.5, fy = 0.5, interpolation=cv2.INTER_LINEAR)
+
+circles = cv2.HoughCircles(img_blur, cv2.HOUGH_GRADIENT, 1.2, 30, None, 200)
 
 def getContours(img, imgContours):
 
@@ -40,15 +51,6 @@ def getContours(img, imgContours):
             cv2.putText(img_contour, 'Points : ' + str(len(approx)), (x + w + 10, y + 10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
             cv2.putText(img_contour, 'Area : ' + str(int(area)), (x + w + 10, y + 35), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
             cv2.putText(img_contour, 'Mass Center  : ' + '(' + str(int(cX)) + ' , ' + str(int(cY))  + ')', (x + w + 10, y + 60), cv2.FONT_HERSHEY_COMPLEX, 0.5, (100, 150, 150), 1)
-
-img_contour = image.copy()
-
-img_blur = cv2.GaussianBlur(image, (7, 7), 1)
-img_gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
-
-img_canny = cv2.Canny(img_gray, 25, 240)
-kernel = np.ones((5, 5))
-img_dil = cv2.dilate(img_canny, kernel, iterations = 1)
 
 getContours(img_dil, img_contour)
 
