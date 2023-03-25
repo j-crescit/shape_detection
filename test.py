@@ -40,10 +40,6 @@ def getContours(img, imgContours):
         cv2.circle(img_contour, (cX, cY), 4, (255, 0, 0), -1)
         cv2.drawContours(img_contour, [i], 0, (0, 255, 255), 2)
 
-        if circles is not None:
-            circles = np.uint16(np.around(circles))
-            for i in circles[0,:]:
-                cv2.circle(img, (i[0], i[1]), i[2], (0, 255, 0), 2)
 
         if area > area_min:
             cv2.drawContours(img_contour, i, -1, (255, 215, 0), 5)
